@@ -247,7 +247,7 @@ const unmotivationalPosters = [
         img_url: "./assets/doubt.jpg",
     }
 ];
-const cleanedUnmotivated = [];
+const cleanedUnmotivatedPosters = [];
 let isDataClean = false
 
 const savedPosters = [];
@@ -257,134 +257,143 @@ let currentPoster;
 window.addEventListener("load", assemblePoster);
 showRandom.addEventListener("click", assemblePoster);
 
-showForm.addEventListener("click", function() {
-    toggleVisibility(posterForm, mainPoster);
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  assembleOwnPoster();
+  toggleVisibility(posterForm, mainPoster);
 });
 
-unmotivational.addEventListener("click", function() {
-    cleanData();
-    postUnmotivationalPoster();
-    toggleVisibility(unmotivationalSection, mainPoster);
+showForm.addEventListener("click", function() {
+  toggleVisibility(posterForm, mainPoster);
 });
 
 showSaved.addEventListener("click", function() {
-    toggleVisibility(showPosters, mainPoster);
+  toggleVisibility(showPosters, mainPoster);
 });
 
 showMain.addEventListener("click", function() {
-    toggleVisibility(posterForm, mainPoster);
+  toggleVisibility(posterForm, mainPoster);
 });
 
 backToMain.addEventListener("click", function() {
-    toggleVisibility(showPosters, mainPoster);
+  toggleVisibility(showPosters, mainPoster);
 });
 
 backToMain2.addEventListener("click", function() {
-    toggleVisibility(unmotivationalSection, mainPoster);
-});
-
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    assembleOwnPoster();
-    toggleVisibility(posterForm, mainPoster);
+  toggleVisibility(unmotivationalSection, mainPoster);
 });
 
 savePoster.addEventListener("click", saveThisPoster);
 
+unmotivational.addEventListener("click", function() {
+  cleanData();
+  postUnmotivationalPoster();
+  toggleVisibility(unmotivationalSection, mainPoster);
+});
+
+unmotivationalSection.addEventListener("dblclick", handleUnmotivatedDoubleclick);
+
 //*********************************************** */
 function getRandomIndex(array) {
-    return Math.floor(Math.random() * array.length);
+return Math.floor(Math.random() * array.length);
 }
 
 function createPoster(imageURL, title, quote) {
-    return {
-    id: Date.now(), 
-    imageURL: imageURL, 
-    title: title, 
-    quote: quote}
+  return {
+  id: Date.now(), 
+  imageURL: imageURL, 
+  title: title, 
+  quote: quote}
 }
 
 function assemblePoster() {
-    const randomImage = images[getRandomIndex(images)];
-    const randomTitle = titles[getRandomIndex(titles)];
-    const randomQuote = quotes[getRandomIndex(quotes)];
+  const randomImage = images[getRandomIndex(images)];
+  const randomTitle = titles[getRandomIndex(titles)];
+  const randomQuote = quotes[getRandomIndex(quotes)];
 
-    posterImg.src = randomImage;
-    posterTitle.innerText = randomTitle;
-    posterQuote.innerText = randomQuote;
+  posterImg.src = randomImage;
+  posterTitle.innerText = randomTitle;
+  posterQuote.innerText = randomQuote;
 
-    currentPoster = createPoster(randomImage, randomTitle, randomQuote);
+  currentPoster = createPoster(randomImage, randomTitle, randomQuote);
 }
 
 function assembleOwnPoster() {
-    posterImg.src = image.value;
-    posterTitle.innerText = title.value;
-    posterQuote.innerText = quote.value;
+  posterImg.src = image.value;
+  posterTitle.innerText = title.value;
+  posterQuote.innerText = quote.value;
 
-    images.push(image.value)
-    titles.push(title.value)
-    quotes.push(quote.value)
+  images.push(image.value)
+  titles.push(title.value)
+  quotes.push(quote.value)
 
-    currentPoster = createPoster(image.value, title.value, quote.value);
+  currentPoster = createPoster(image.value, title.value, quote.value);
 }
 
 function toggleVisibility(element1, element2) {
-    element1.classList.toggle("hidden");
-    element2.classList.toggle("hidden");
+  element1.classList.toggle("hidden");
+  element2.classList.toggle("hidden");
 }
 
 function saveThisPoster() {
-    if (!savedPosters.includes(currentPoster)){
-        savedPosters.push(currentPoster);
-    }
+  if (!savedPosters.includes(currentPoster)){
+    savedPosters.push(currentPoster);
+  }
 
-    posterGrid.innerHTML = '';
+  posterGrid.innerHTML = '';
 
-    savedPosters.forEach(poster =>{
-        const miniPoster = document.createElement("div");
-        miniPoster.classList.add("mini-poster");
-        const img = document.createElement("img");
-        img.src = poster.imageURL;
-        const title = document.createElement("h2");
-        title.innerText = poster.title;
-        const quote = document.createElement("h4");
-        quote.innerText = poster.quote;
-        
-        miniPoster.appendChild(img);
-        miniPoster.appendChild(title);
-        miniPoster.appendChild(quote);
+  savedPosters.forEach(poster => {
+    const miniPoster = document.createElement("div");
+    miniPoster.classList.add("mini-poster");
+    const img = document.createElement("img");
+    img.src = poster.imageURL;
+    const title = document.createElement("h2");
+    title.innerText = poster.title;
+    const quote = document.createElement("h4");
+    quote.innerText = poster.quote;
+    
+    miniPoster.appendChild(img);
+    miniPoster.appendChild(title);
+    miniPoster.appendChild(quote);
 
-        posterGrid.appendChild(miniPoster);
-    });
+    posterGrid.appendChild(miniPoster);
+  });
 }
 
 function cleanData() {
-    if(!isDataClean) {
-        unmotivationalPosters.forEach(poster => {
-            const newPoster = createPoster(poster.img_url, poster.name, poster.description);
-            cleanedUnmotivated.push(newPoster);
-        });
-        isDataClean = true;
-    }
+  if(!isDataClean) {
+    unmotivationalPosters.forEach(poster => {
+      const newPoster = createPoster(poster.img_url, poster.name, poster.description);
+      cleanedUnmotivatedPosters.push(newPoster);
+    });
+    isDataClean = true;
+  }
 }
 
 function postUnmotivationalPoster() {
-    unPosterFlex.innerHTML = '';
+  unPosterFlex.innerHTML = '';
     
-    cleanedUnmotivated.forEach(poster =>{
-        const miniPoster = document.createElement("div");
-        miniPoster.classList.add("unmotivated-mini");
-        const img = document.createElement("img");
-        img.src = poster.imageURL;
-        const title = document.createElement("h2");
-        title.innerText = poster.title;
-        const quote = document.createElement("h4");
-        quote.innerText = poster.quote;
-        
-        miniPoster.appendChild(img);
-        miniPoster.appendChild(title);
-        miniPoster.appendChild(quote);
+  cleanedUnmotivatedPosters.forEach(poster =>{
+    const miniPoster = document.createElement("div");
+    miniPoster.classList.add("unmotivated-mini");
+    const img = document.createElement("img");
+    img.src = poster.imageURL;
+    const title = document.createElement("h2");
+    title.innerText = poster.title;
+    const quote = document.createElement("h4");
+    quote.innerText = poster.quote;
+    
+    miniPoster.appendChild(img);
+    miniPoster.appendChild(title);
+    miniPoster.appendChild(quote);
 
-        unPosterFlex.appendChild(miniPoster);
-    });
+    unPosterFlex.appendChild(miniPoster);
+  });
+}
+
+function handleUnmotivatedDoubleclick(event) {
+  const poster = event.target.closest('.unmotivated-mini');
+    if (poster) {
+      poster.remove();
+    }
 }
