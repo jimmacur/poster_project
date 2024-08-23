@@ -340,7 +340,7 @@ function saveThisPoster() {
 
   posterGrid.innerHTML = '';
 
-  savedPosters.forEach(poster =>{
+  savedPosters.forEach(poster => {
     const miniPoster = document.createElement("div");
     miniPoster.classList.add("mini-poster");
     const img = document.createElement("img");

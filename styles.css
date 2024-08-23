@@ -125,12 +125,6 @@ button:hover {
   width: 425px;
 }
 
-.unmotivated-mini {
-  background: rgb(147, 147, 147);
-  color: black;
-  border-radius:15px;
-}
-
 .unmotivated-mini img,
 .mini-poster img {
   height:200px;
@@ -155,6 +149,15 @@ button:hover {
   text-transform: uppercase;
 }
 
+
+/* ~~~~~ Un-MOTIVATED POSTER SECTION ~~~~~ */
+
+.unmotivated-mini {
+  background: rgb(147, 147, 147);
+  color: black;
+  border-radius:15px;
+}
+
 .unmotivational-posters-flex {
   display: flex;               
   flex-wrap: wrap;            
@@ -162,8 +165,6 @@ button:hover {
   padding: 20px;               
   justify-content: center;
 }
-
-
 
 .unmotivated-mini h2 {
   margin-bottom: 10px;
