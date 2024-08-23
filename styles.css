@@ -164,6 +164,11 @@ button:active{
   background: rgb(147, 147, 147);
   color: black;
   border-radius:15px;
+  cursor:pointer;
+}
+
+.unmotivated-mini:active{
+  transform: scale(0.95);
 }
 
 .unmotivational-posters-flex {
