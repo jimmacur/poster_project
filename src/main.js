@@ -257,14 +257,14 @@ let currentPoster;
 window.addEventListener("load", assemblePoster);
 showRandom.addEventListener("click", assemblePoster);
 
-showForm.addEventListener("click", function() {
+form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  assembleOwnPoster();
   toggleVisibility(posterForm, mainPoster);
 });
 
-unmotivational.addEventListener("click", function() {
-  cleanData();
-  postUnmotivationalPoster();
-  toggleVisibility(unmotivationalSection, mainPoster);
+showForm.addEventListener("click", function() {
+  toggleVisibility(posterForm, mainPoster);
 });
 
 showSaved.addEventListener("click", function() {
@@ -272,24 +272,26 @@ showSaved.addEventListener("click", function() {
 });
 
 showMain.addEventListener("click", function() {
-toggleVisibility(posterForm, mainPoster);
+  toggleVisibility(posterForm, mainPoster);
 });
 
 backToMain.addEventListener("click", function() {
-toggleVisibility(showPosters, mainPoster);
+  toggleVisibility(showPosters, mainPoster);
 });
 
 backToMain2.addEventListener("click", function() {
-toggleVisibility(unmotivationalSection, mainPoster);
-});
-
-form.addEventListener("submit", function(event) {
-event.preventDefault();
-assembleOwnPoster();
-toggleVisibility(posterForm, mainPoster);
+  toggleVisibility(unmotivationalSection, mainPoster);
 });
 
 savePoster.addEventListener("click", saveThisPoster);
+
+unmotivational.addEventListener("click", function() {
+  cleanData();
+  postUnmotivationalPoster();
+  toggleVisibility(unmotivationalSection, mainPoster);
+});
+
+unmotivationalSection.addEventListener("dblclick", handleUnmotivatedDoubleclick);
 
 //*********************************************** */
 function getRandomIndex(array) {
@@ -387,4 +389,11 @@ function postUnmotivationalPoster() {
 
     unPosterFlex.appendChild(miniPoster);
   });
+}
+
+function handleUnmotivatedDoubleclick(event) {
+  const poster = event.target.closest('.unmotivated-mini');
+    if (poster) {
+      poster.remove();
+    }
 }
