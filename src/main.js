@@ -1,34 +1,34 @@
-let showRandom = document.querySelector(".show-random");
-let showForm = document.querySelector(".show-form");
-let showSaved = document.querySelector(".show-saved");
-let showMain = document.querySelector(".show-main");
-let savePoster = document.querySelector(".save-poster");
-let unmotivational = document.querySelector(".unmotivational");
+const showRandom = document.querySelector(".show-random");
+const showForm = document.querySelector(".show-form");
+const showSaved = document.querySelector(".show-saved");
+const showMain = document.querySelector(".show-main");
+const savePoster = document.querySelector(".save-poster");
+const unmotivational = document.querySelector(".unmotivational");
 
-let backToMain = document.querySelector(".back-to-main");
-let backToMain2 = document.querySelector(".back-to-main2");
+const backToMain = document.querySelector(".back-to-main");
+const backToMain2 = document.querySelector(".back-to-main2");
 
-let showMyPoster = document.querySelector(".make-poster");
+const showMyPoster = document.querySelector(".make-poster");
 
-let posterForm = document.querySelector(".poster-form");
-let mainPoster = document.querySelector(".main-poster");
-let showPosters = document.querySelector(".saved-posters");
-let unmotivationalSection = document.querySelector(".unmotivational-posters");
+const posterForm = document.querySelector(".poster-form");
+const mainPoster = document.querySelector(".main-poster");
+const showPosters = document.querySelector(".saved-posters");
+const unmotivationalSection = document.querySelector(".unmotivational-posters");
 
-let posterImg = document.querySelector(".poster-img");
-let posterTitle = document.querySelector(".poster-title");
-let posterQuote = document.querySelector(".poster-quote");
+const posterImg = document.querySelector(".poster-img");
+const posterTitle = document.querySelector(".poster-title");
+const posterQuote = document.querySelector(".poster-quote");
 
-let image = document.querySelector("#poster-image-url");
-let title = document.querySelector("#poster-title");
-let quote = document.querySelector("#poster-quote");
+const image = document.querySelector("#poster-image-url");
+const title = document.querySelector("#poster-title");
+const quote = document.querySelector("#poster-quote");
 
-let form = document.querySelector("form");
+const form = document.querySelector("form");
 
-let posterGrid = document.querySelector(".saved-posters-grid");
-let unPosterFlex = document.querySelector(".unmotivational-posters-flex");
+const posterGrid = document.querySelector(".saved-posters-grid");
+const unPosterFlex = document.querySelector(".unmotivational-posters-flex");
 
-let images = [
+const images = [
     "./assets/bees.jpg",
     "./assets/bridge.jpg",
     "./assets/butterfly.jpg",
@@ -48,7 +48,7 @@ let images = [
     "./assets/tiger.jpg",
     "./assets/turtle.jpg"
 ];
-let titles = [
+const titles = [
     "determination",
     "success",
     "inspiration",
@@ -85,7 +85,7 @@ let titles = [
     "understanding",
     "wisdom"
 ];
-let quotes = [
+const quotes = [
     "Don’t downgrade your dream just to fit your reality, upgrade your conviction to match your destiny.",
     "You are braver than you believe, stronger than you seem and smarter than you think.",
     "You are confined only by the walls you build yourself.",
@@ -125,7 +125,7 @@ let quotes = [
     "Each person must live their life as a model for others.",
     "A champion is defined not by their wins but by how they can recover when they fall."
 ];
-let unmotivationalPosters = [
+const unmotivationalPosters = [
     {
         name: "FAILURE",
         description: "Why bother trying? It's probably not worth it.",
@@ -247,10 +247,10 @@ let unmotivationalPosters = [
         img_url: "./assets/doubt.jpg",
     }
 ];
-let cleanedUnmotivated = [];
+const cleanedUnmotivated = [];
 let isDataClean = false
 
-let savedPosters = [];
+const savedPosters = [];
 let currentPoster;
 
 //*********************************************** */
@@ -305,9 +305,9 @@ function createPoster(imageURL, title, quote) {
 }
 
 function assemblePoster() {
-    let randomImage = images[getRandomIndex(images)];
-    let randomTitle = titles[getRandomIndex(titles)];
-    let randomQuote = quotes[getRandomIndex(quotes)];
+    const randomImage = images[getRandomIndex(images)];
+    const randomTitle = titles[getRandomIndex(titles)];
+    const randomQuote = quotes[getRandomIndex(quotes)];
 
     posterImg.src = randomImage;
     posterTitle.innerText = randomTitle;
@@ -341,13 +341,13 @@ function saveThisPoster() {
     posterGrid.innerHTML = '';
 
     savedPosters.forEach(poster =>{
-        let miniPoster = document.createElement("div");
+        const miniPoster = document.createElement("div");
         miniPoster.classList.add("mini-poster");
-        let img = document.createElement("img");
+        const img = document.createElement("img");
         img.src = poster.imageURL;
-        let title = document.createElement("h2");
+        const title = document.createElement("h2");
         title.innerText = poster.title;
-        let quote = document.createElement("h4");
+        const quote = document.createElement("h4");
         quote.innerText = poster.quote;
         
         miniPoster.appendChild(img);
@@ -361,7 +361,7 @@ function saveThisPoster() {
 function cleanData() {
     if(!isDataClean) {
         unmotivationalPosters.forEach(poster => {
-            let newPoster = createPoster(poster.img_url, poster.name, poster.description);
+            const newPoster = createPoster(poster.img_url, poster.name, poster.description);
             cleanedUnmotivated.push(newPoster);
         });
         isDataClean = true;
@@ -372,13 +372,13 @@ function postUnmotivationalPoster() {
     unPosterFlex.innerHTML = '';
     
     cleanedUnmotivated.forEach(poster =>{
-        let miniPoster = document.createElement("div");
+        const miniPoster = document.createElement("div");
         miniPoster.classList.add("unmotivated-mini");
-        let img = document.createElement("img");
+        const img = document.createElement("img");
         img.src = poster.imageURL;
-        let title = document.createElement("h2");
+        const title = document.createElement("h2");
         title.innerText = poster.title;
-        let quote = document.createElement("h4");
+        const quote = document.createElement("h4");
         quote.innerText = poster.quote;
         
         miniPoster.appendChild(img);
