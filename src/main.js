@@ -247,7 +247,7 @@ const unmotivationalPosters = [
         img_url: "./assets/doubt.jpg",
     }
 ];
-const cleanedUnmotivated = [];
+const cleanedUnmotivatedPosters = [];
 let isDataClean = false
 
 const savedPosters = [];
@@ -362,7 +362,7 @@ function cleanData() {
     if(!isDataClean) {
         unmotivationalPosters.forEach(poster => {
             const newPoster = createPoster(poster.img_url, poster.name, poster.description);
-            cleanedUnmotivated.push(newPoster);
+            cleanedUnmotivatedPosters.push(newPoster);
         });
         isDataClean = true;
     }
@@ -371,7 +371,7 @@ function cleanData() {
 function postUnmotivationalPoster() {
     unPosterFlex.innerHTML = '';
     
-    cleanedUnmotivated.forEach(poster =>{
+    cleanedUnmotivatedPosters.forEach(poster =>{
         const miniPoster = document.createElement("div");
         miniPoster.classList.add("unmotivated-mini");
         const img = document.createElement("img");

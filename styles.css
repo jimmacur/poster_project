@@ -116,12 +116,19 @@ button:hover {
     padding: 20px;
 }
 
+.unmotivated-mini,
 .mini-poster {
     background: black;
     color: white;
     height: 340px;
     padding: 25px;
     width: 425px;
+}
+
+.unmotivated-mini {
+    background: rgb(147, 147, 147);
+    color: black;
+    border-radius:15px;
 }
 
 .unmotivated-mini img,
@@ -139,6 +146,7 @@ button:hover {
     width: 90%;
 }
 
+.unmotivated-mini h2,
 .mini-poster h2 {
     font-size: 30px;
     font-weight: normal;
@@ -155,19 +163,8 @@ button:hover {
     justify-content: center;
 }
 
-.unmotivated-mini {
-    background: rgb(147, 147, 147);
-    color: black;
-    height: 340px;
-    padding: 25px;
-    width: 425px;
-    border-radius:15px;
-}
+
 
 .unmotivated-mini h2 {
-    font-size: 30px;
-    font-weight: normal;
-    letter-spacing: 5px;
-    margin-top: 10px;
     margin-bottom: 10px;
 }
