@@ -20,13 +20,21 @@ input {
 
 button {
   background: black;
-  border: none;
   border-radius: 10px;
   color: white;
+  border: 2px;
+  outline: 5px solid black;
+  outline-offset: -2px;
+  transition: outline-offset 200ms ease;
 }
 
 button:hover {
   background: darkslateblue;
+  outline-offset: 1px;
+}
+
+button:active{
+  transform: scale(0.95);
 }
 
 .hidden {
