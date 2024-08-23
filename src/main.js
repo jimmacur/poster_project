@@ -26,7 +26,7 @@ let quote = document.querySelector("#poster-quote");
 let form = document.querySelector("form");
 
 let posterGrid = document.querySelector(".saved-posters-grid");
-let unPosterGrid = document.querySelector(".unmotivational-posters-flex");
+let unPosterFlex = document.querySelector(".unmotivational-posters-flex");
 
 let images = [
     "./assets/bees.jpg",
@@ -369,7 +369,7 @@ function cleanData() {
 }
 
 function postUnmotivationalPoster() {
-    unPosterGrid.innerHTML = '';
+    unPosterFlex.innerHTML = '';
     
     cleanedUnmotivated.forEach(poster =>{
         let miniPoster = document.createElement("div");
@@ -385,6 +385,6 @@ function postUnmotivationalPoster() {
         miniPoster.appendChild(title);
         miniPoster.appendChild(quote);
 
-        unPosterGrid.appendChild(miniPoster);
+        unPosterFlex.appendChild(miniPoster);
     });
 }
