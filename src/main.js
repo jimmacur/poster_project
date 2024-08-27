@@ -294,6 +294,8 @@ unmotivational.addEventListener("click", function() {
 unmotivationalSection.addEventListener("dblclick", handleUnmotivatedDoubleclick);
 
 posterImg.addEventListener('click', handleImageClick);
+posterTitle.addEventListener('click', handleTitleClick);
+posterQuote.addEventListener('click', handleQuoteClick);
 
 //*********************************************** */
 function getRandomIndex(array) {
@@ -408,11 +410,20 @@ function handleUnmotivatedDoubleclick(event) {
     }
 }
 
-function handleImageClick(event) {
-  console.log('Image clicked');
-  if (event.target.tagName === 'IMG') {
-    const randomImage = images[getRandomIndex(images)];
-    posterImg.src = randomImage;
-    currentPoster.imageURL = randomImage; 
-  }
+function handleImageClick() {
+  const randomImage = images[getRandomIndex(images)];
+  posterImg.src = randomImage;
+  currentPoster.imageURL = randomImage; 
+}
+
+function handleTitleClick() {
+  const randomTitle = titles[getRandomIndex(titles)];
+  posterTitle.innerText = randomTitle;
+  currentPoster.title = randomTitle;
+}
+
+function handleQuoteClick() {
+  const randomQuote = quotes[getRandomIndex(quotes)];
+  posterQuote.innerText = randomQuote;
+  currentPoster.quote = randomQuote;
 }
