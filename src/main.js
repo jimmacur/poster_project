@@ -4,27 +4,20 @@ const showSaved = document.querySelector(".show-saved");
 const showMain = document.querySelector(".show-main");
 const savePoster = document.querySelector(".save-poster");
 const unmotivational = document.querySelector(".unmotivational");
-
 const backToMain = document.querySelector(".back-to-main");
 const backToMain2 = document.querySelector(".back-to-main2");
-
 const showMyPoster = document.querySelector(".make-poster");
-
 const posterForm = document.querySelector(".poster-form");
 const mainPoster = document.querySelector(".main-poster");
 const showPosters = document.querySelector(".saved-posters");
 const unmotivationalSection = document.querySelector(".unmotivational-posters");
-
 const posterImg = document.querySelector(".poster-img");
 const posterTitle = document.querySelector(".poster-title");
 const posterQuote = document.querySelector(".poster-quote");
-
 const image = document.querySelector("#poster-image-url");
 const title = document.querySelector("#poster-title");
 const quote = document.querySelector("#poster-quote");
-
 const form = document.querySelector("form");
-
 const posterGrid = document.querySelector(".saved-posters-grid");
 const unPosterFlex = document.querySelector(".unmotivational-posters-flex");
 
@@ -249,7 +242,6 @@ const unmotivationalPosters = [
 ];
 let cleanedUnmotivatedPosters = [];
 let isDataClean = false
-
 const savedPosters = [];
 let currentPoster;
 
@@ -344,39 +336,14 @@ function saveThisPoster() {
     savedPosters.push(currentPoster);
   }
 
-  posterGrid.innerHTML = '';
-
-  savedPosters.forEach(poster => {
-    const miniPoster = document.createElement("div");
-    miniPoster.classList.add("mini-poster");
-    const img = document.createElement("img");
-    img.src = poster.imageURL;
-    const title = document.createElement("h2");
-    title.innerText = poster.title;
-    const quote = document.createElement("h4");
-    quote.innerText = poster.quote;
-    
-    miniPoster.appendChild(img);
-    miniPoster.appendChild(title);
-    miniPoster.appendChild(quote);
-
-    posterGrid.appendChild(miniPoster);
-  });
+  posterGrid.innerHTML = savedPosters.map(poster => `
+    <div class="mini-poster">
+      <img src="${poster.imageURL}">
+      <h2>${poster.title}</h2>
+      <h4>${poster.quote}</h4>
+    </div>
+  `).join('');
 }
-
-// function saveThisPoster() {
-//   if (!savedPosters.some(poster => poster.imageURL === currentPoster.imageURL)) {
-//     savedPosters.push(currentPoster);
-//   }
-
-//   posterGrid.innerHTML = savedPosters.map(poster => `
-//     <div class="mini-poster">
-//       <img src="${poster.imageURL}">
-//       <h2>${poster.title}</h2>
-//       <h4>${poster.quote}</h4>
-//     </div>
-//   `).join('');
-// }
 
 function cleanData() {
   if(!isDataClean) {
@@ -389,35 +356,14 @@ function cleanData() {
 }
 
 function postUnmotivationalPoster() {
-  unPosterFlex.innerHTML = '';
-    
-  cleanedUnmotivatedPosters.forEach(poster =>{
-    const miniPoster = document.createElement("div");
-    miniPoster.classList.add("unmotivated-mini");
-    const img = document.createElement("img");
-    img.src = poster.imageURL;
-    const title = document.createElement("h2");
-    title.innerText = poster.title;
-    const quote = document.createElement("h4");
-    quote.innerText = poster.quote;
-    
-    miniPoster.appendChild(img);
-    miniPoster.appendChild(title);
-    miniPoster.appendChild(quote);
-
-    unPosterFlex.appendChild(miniPoster);
-  });
+  unPosterFlex.innerHTML = cleanedUnmotivatedPosters.map(poster => `
+    <div class="unmotivated-mini">
+      <img src="${poster.imageURL}">
+      <h2>${poster.title}</h2>
+      <h4>${poster.quote}</h4>
+    </div>
+  `).join('');
 }
-
-// function postUnmotivationalPoster() {
-//   unPosterFlex.innerHTML = cleanedUnmotivatedPosters.map(poster => `
-//     <div class="unmotivated-mini">
-//       <img src="${poster.imageURL}">
-//       <h2>${poster.title}</h2>
-//       <h4>${poster.quote}</h4>
-//     </div>
-//   `).join('');
-// }
 
 function handleUnmotivatedDoubleclick(event) {
   const poster = event.target.closest('.unmotivated-mini');
