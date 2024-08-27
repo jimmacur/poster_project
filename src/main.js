@@ -293,6 +293,10 @@ unmotivational.addEventListener("click", function() {
 
 unmotivationalSection.addEventListener("dblclick", handleUnmotivatedDoubleclick);
 
+posterImg.addEventListener('click', handleImageClick);
+posterTitle.addEventListener('click', handleTitleClick);
+posterQuote.addEventListener('click', handleQuoteClick);
+
 //*********************************************** */
 function getRandomIndex(array) {
 return Math.floor(Math.random() * array.length);
@@ -404,4 +408,22 @@ function handleUnmotivatedDoubleclick(event) {
     
     cleanedUnmotivatedPosters = cleanedUnmotivatedPosters.filter(poster => poster.title !== title);
     }
+}
+
+function handleImageClick() {
+  const randomImage = images[getRandomIndex(images)];
+  posterImg.src = randomImage;
+  currentPoster.imageURL = randomImage; 
+}
+
+function handleTitleClick() {
+  const randomTitle = titles[getRandomIndex(titles)];
+  posterTitle.innerText = randomTitle;
+  currentPoster.title = randomTitle;
+}
+
+function handleQuoteClick() {
+  const randomQuote = quotes[getRandomIndex(quotes)];
+  posterQuote.innerText = randomQuote;
+  currentPoster.quote = randomQuote;
 }
