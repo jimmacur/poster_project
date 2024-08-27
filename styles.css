@@ -26,6 +26,7 @@ button {
   outline: 5px solid black;
   outline-offset: -2px;
   transition: outline-offset 200ms ease;
+  cursor: pointer;
 }
 
 button:hover {
@@ -60,6 +61,7 @@ button:active{
   background-size: cover;
   border: 2px solid white;
   max-width: 80%;
+  cursor: pointer;
 }
 
 .poster-title,
@@ -67,10 +69,11 @@ button:active{
   color: white;
   line-height: 1;
   width: 90%;
+  cursor: pointer;
 }
 
 .poster-title {
-  font-size: 60px;
+  font-size: 55px;
   font-weight: normal;
   letter-spacing: 20px;
   margin-bottom: 10px;
