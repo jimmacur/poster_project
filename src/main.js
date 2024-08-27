@@ -293,6 +293,8 @@ unmotivational.addEventListener("click", function() {
 
 unmotivationalSection.addEventListener("dblclick", handleUnmotivatedDoubleclick);
 
+posterImg.addEventListener('click', handleImageClick);
+
 //*********************************************** */
 function getRandomIndex(array) {
 return Math.floor(Math.random() * array.length);
@@ -404,4 +406,13 @@ function handleUnmotivatedDoubleclick(event) {
     
     cleanedUnmotivatedPosters = cleanedUnmotivatedPosters.filter(poster => poster.title !== title);
     }
+}
+
+function handleImageClick(event) {
+  console.log('Image clicked');
+  if (event.target.tagName === 'IMG') {
+    const randomImage = images[getRandomIndex(images)];
+    posterImg.src = randomImage;
+    currentPoster.imageURL = randomImage; 
+  }
 }
