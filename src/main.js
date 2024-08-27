@@ -347,10 +347,9 @@ function saveThisPoster() {
 
 function cleanData() {
   if(!isDataClean) {
-    unmotivationalPosters.forEach(poster => {
-      const newPoster = createPoster(poster.img_url, poster.name, poster.description);
-      cleanedUnmotivatedPosters.push(newPoster);
-    });
+    cleanedUnmotivatedPosters = unmotivationalPosters.map(poster => 
+      createPoster(poster.img_url, poster.name, poster.description)
+    );
     isDataClean = true;
   }
 }
