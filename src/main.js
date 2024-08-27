@@ -364,6 +364,20 @@ function saveThisPoster() {
   });
 }
 
+// function saveThisPoster() {
+//   if (!savedPosters.some(poster => poster.imageURL === currentPoster.imageURL)) {
+//     savedPosters.push(currentPoster);
+//   }
+
+//   posterGrid.innerHTML = savedPosters.map(poster => `
+//     <div class="mini-poster">
+//       <img src="${poster.imageURL}">
+//       <h2>${poster.title}</h2>
+//       <h4>${poster.quote}</h4>
+//     </div>
+//   `).join('');
+// }
+
 function cleanData() {
   if(!isDataClean) {
     unmotivationalPosters.forEach(poster => {
@@ -394,6 +408,16 @@ function postUnmotivationalPoster() {
     unPosterFlex.appendChild(miniPoster);
   });
 }
+
+// function postUnmotivationalPoster() {
+//   unPosterFlex.innerHTML = cleanedUnmotivatedPosters.map(poster => `
+//     <div class="unmotivated-mini">
+//       <img src="${poster.imageURL}">
+//       <h2>${poster.title}</h2>
+//       <h4>${poster.quote}</h4>
+//     </div>
+//   `).join('');
+// }
 
 function handleUnmotivatedDoubleclick(event) {
   const poster = event.target.closest('.unmotivated-mini');

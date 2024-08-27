@@ -73,7 +73,7 @@ button:active{
 }
 
 .poster-title {
-  font-size: 55px;
+  font-size: clamp(1em, 4vw, 3em);
   font-weight: normal;
   letter-spacing: 20px;
   margin-bottom: 10px;
