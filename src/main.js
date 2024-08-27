@@ -247,7 +247,7 @@ const unmotivationalPosters = [
         img_url: "./assets/doubt.jpg",
     }
 ];
-const cleanedUnmotivatedPosters = [];
+let cleanedUnmotivatedPosters = [];
 let isDataClean = false
 
 const savedPosters = [];
@@ -395,5 +395,13 @@ function handleUnmotivatedDoubleclick(event) {
   const poster = event.target.closest('.unmotivated-mini');
     if (poster) {
       poster.remove();
+
+    const titleElement = poster.querySelector('h2');
+    let title = '';
+    if (titleElement) {
+      title = titleElement.textContent;
+    }
+    
+    cleanedUnmotivatedPosters = cleanedUnmotivatedPosters.filter(poster => poster.title !== title);
     }
 }
