@@ -336,47 +336,53 @@ function saveThisPoster() {
     savedPosters.push(currentPoster);
   }
 
-  posterGrid.innerHTML = savedPosters.map(poster => `
-    <div class="mini-poster">
-      <img src="${poster.imageURL}">
-      <h2>${poster.title}</h2>
-      <h4>${poster.quote}</h4>
-    </div>
-  `).join('');
+  posterGrid.innerHTML = savedPosters.map((poster) => {
+    return `
+      <div class="mini-poster">
+        <img src="${poster.imageURL}">
+        <h2>${poster.title}</h2>
+        <h4>${poster.quote}</h4>
+      </div>
+    `;
+  }).join('');
 }
 
 function cleanData() {
   if(!isDataClean) {
-    cleanedUnmotivatedPosters = unmotivationalPosters.map(poster => 
-      createPoster(poster.img_url, poster.name, poster.description)
-    );
+    cleanedUnmotivatedPosters = unmotivationalPosters.map((poster) => {
+      return createPoster(poster.img_url, poster.name, poster.description)
+    });
     isDataClean = true;
   }
 }
 
+
 function postUnmotivationalPoster() {
-  unPosterFlex.innerHTML = cleanedUnmotivatedPosters.map(poster => `
-    <div class="unmotivated-mini">
-      <img src="${poster.imageURL}">
-      <h2>${poster.title}</h2>
-      <h4>${poster.quote}</h4>
-    </div>
-  `).join('');
+  unPosterFlex.innerHTML = cleanedUnmotivatedPosters.map((poster) => {
+    return `
+      <div class="unmotivated-mini">
+        <img src="${poster.imageURL}">
+        <h2>${poster.title}</h2>
+        <h4>${poster.quote}</h4>
+      </div>
+  `;
+}).join('');
 }
 
 function handleUnmotivatedDoubleclick(event) {
   const poster = event.target.closest('.unmotivated-mini');
     if (poster) {
       poster.remove();
-
+    }
     const titleElement = poster.querySelector('h2');
     let title = '';
     if (titleElement) {
       title = titleElement.textContent;
     }
     
-    cleanedUnmotivatedPosters = cleanedUnmotivatedPosters.filter(poster => poster.title !== title);
-    }
+    cleanedUnmotivatedPosters = cleanedUnmotivatedPosters.filter((poster) => {
+      return poster.title !== title;
+    });
 }
 
 function handleImageClick() {
